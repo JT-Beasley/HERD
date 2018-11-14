@@ -14,7 +14,11 @@ import java.awt.event.*;
  * @author jtbea
  */
 public class HERDLogin extends javax.swing.JPanel {
-
+    
+    private String userName;
+    private String passwd;
+    private Login login = new Login();
+    
     /**
      * Creates new form HERDLogin
      */
@@ -29,7 +33,7 @@ public class HERDLogin extends javax.swing.JPanel {
         {
             @Override public void actionPerformed(ActionEvent e)
             {
-        
+                  userName = jTextField1.getText();
             }
         });
         add(jTextField1);
@@ -38,10 +42,27 @@ public class HERDLogin extends javax.swing.JPanel {
         {
                  @Override public void actionPerformed(ActionEvent e)
                 {
-                    
+                    passwd = jTextField2.getText();
                 }
         });
         add(jTextField2);
+        
+        jButton1.addActionListener(new ActionListener()
+        {
+               @Override public void actionPerformed(ActionEvent e)
+                {
+                    boolean result = login.approved(userName, passwd);
+                    
+                    if(result == true)
+                    {
+                        System.out.println("Approved");
+                    }
+                    else
+                    {
+                        System.out.println("Invalid Username or Password");
+                    }
+                }
+        });
         
         
     }
@@ -55,10 +76,14 @@ public class HERDLogin extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCheckBox2 = new javax.swing.JCheckBox();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+
+        jCheckBox2.setText("jCheckBox2");
 
         jTextField1.setText("jTextField1");
 
@@ -67,6 +92,8 @@ public class HERDLogin extends javax.swing.JPanel {
         jTextField2.setText("jTextField2");
 
         jLabel2.setText("Password");
+
+        jButton1.setText("Log In");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -80,9 +107,11 @@ public class HERDLogin extends javax.swing.JPanel {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                        .addComponent(jTextField1)))
                 .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
@@ -96,12 +125,16 @@ public class HERDLogin extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(141, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextField1;
