@@ -51,7 +51,7 @@ public final class Session {
 
     public void Login() {
         // trigger login process
-        this.approved();
+        //this.approved();
     }
 
     /**
@@ -68,9 +68,9 @@ public final class Session {
      * @param es
      * @throws NullPointerException
      */
-    public void checkUserName() throws NullPointerException {
-        System.out.print("Enter your username: ");
-        String userName = scanner.nextLine();
+    public void checkUserName(String userName) throws NullPointerException {
+        //System.out.print("Enter your username: ");
+        //String userName = scanner.nextLine();
         try {
 
             if (((this.us.findUser(userName)).getName()).equals(userName)) {
@@ -90,10 +90,10 @@ public final class Session {
      *
      * @param es
      */
-    public void checkPassword() throws NullPointerException {
+    public void checkPassword(String passwd) throws NullPointerException {
         try {
-            System.out.print("Enter your password: ");
-            String passwd = scanner.nextLine();
+            //System.out.print("Enter your password: ");
+            //String passwd = scanner.nextLine();
 
             if (((us.findUser(currentUser)).getPassword()).equals(passwd)) {
                 this.validPassword = true;
@@ -111,12 +111,12 @@ public final class Session {
         return this.activeUser;
     }
 
-    public boolean approved() {
+    public boolean approved(String userName, String passwd) {
         this.us = new UserSearch(this.users);
-        this.checkUserName();
+        this.checkUserName(userName);
 
         if (this.validUserName == true) {
-            this.checkPassword();
+            this.checkPassword(passwd);
         }
 
         if (this.validPassword == true) {

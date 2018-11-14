@@ -17,9 +17,11 @@ public class HERD {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         
-        
+        DataReader data = new FileDataReader();
+        data.load();
+        EventSystem es = data.getEventSystem();
         
         HERDLoginFrame hLogin = new HERDLoginFrame();
         

@@ -17,7 +17,8 @@ public class HERDLogin extends javax.swing.JPanel {
     
     private String userName;
     private String passwd;
-    private Login login = new Login();
+    
+    private Session session = new Session(es.getUsers());
     
     /**
      * Creates new form HERDLogin
@@ -29,29 +30,33 @@ public class HERDLogin extends javax.swing.JPanel {
         
         
         
-        jTextField1.addActionListener(new ActionListener()
+        /*jTextField1.addActionListener(new ActionListener()
         {
             @Override public void actionPerformed(ActionEvent e)
             {
                   userName = jTextField1.getText();
             }
-        });
+        });*/
         add(jTextField1);
         
-        jTextField2.addActionListener(new ActionListener()
+        /*jTextField2.addActionListener(new ActionListener()
         {
                  @Override public void actionPerformed(ActionEvent e)
                 {
                     passwd = jTextField2.getText();
                 }
-        });
+        });*/
         add(jTextField2);
         
         jButton1.addActionListener(new ActionListener()
         {
                @Override public void actionPerformed(ActionEvent e)
                 {
-                    boolean result = login.approved(userName, passwd);
+                    
+                    userName = jTextField1.getText();
+                    passwd = jTextField2.getText();
+                    
+                    boolean result = session.approved(userName, passwd);
                     
                     if(result == true)
                     {
