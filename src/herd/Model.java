@@ -38,8 +38,8 @@ public class Model {
         es = data.getEventSystem();
     }
     
-    public void approved(){
-        session.Login();
+    public boolean approved(String userName, String passwd){
+       return session.approved(userName, passwd);
 
     }
     

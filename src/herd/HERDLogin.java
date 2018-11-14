@@ -19,7 +19,7 @@ public class HERDLogin extends javax.swing.JPanel {
     private String passwd;
     private Model aModel = new Model();
     
-    private Session session = new Session(es.getUsers());
+    
     
     /**
      * Creates new form HERDLogin
@@ -53,13 +53,12 @@ public class HERDLogin extends javax.swing.JPanel {
         {
                @Override public void actionPerformed(ActionEvent e)
                 {
-                    aModel.approved(userName, passwd);
-//                    boolean result = login.approved(userName, passwd);
+                    
                     
                     userName = jTextField1.getText();
                     passwd = jTextField2.getText();
                     
-                    boolean result = session.approved(userName, passwd);
+                    boolean result = aModel.approved(userName, passwd);
                     
                     if(result == true)
                     {
