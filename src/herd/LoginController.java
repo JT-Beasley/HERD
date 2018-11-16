@@ -13,65 +13,50 @@ import java.awt.event.*;
  *
  * @author jtbea
  */
-public class HERDLogin extends javax.swing.JPanel {
+public class LoginController extends javax.swing.JPanel {
     
     private String userName;
     private String passwd;
-    private Model aModel = new Model();
-    
-    
+    final private Model aModel;
+    final private LoginView aView;
+    final private LoginFrame logFrame;
     
     /**
      * Creates new form HERDLogin
      */
-    public HERDLogin() {
+    public LoginController(final Model aModel, final LoginView aView, final LoginFrame frame) {
         
         initComponents();
+        this.aModel = aModel;
+        this.aView = aView;
+        logFrame = frame;
         
+        username_TextField.setText("");
+        password_TextField.setText("");
         
-        
-        
-        /*jTextField1.addActionListener(new ActionListener()
-        {
-            @Override public void actionPerformed(ActionEvent e)
-            {
-                  userName = jTextField1.getText();
-            }
-        });*/
-        add(jTextField1);
-        
-        /*jTextField2.addActionListener(new ActionListener()
-        {
-                 @Override public void actionPerformed(ActionEvent e)
-                {
-                    passwd = jTextField2.getText();
-                }
-        });*/
-        add(jTextField2);
-        
-        jButton1.addActionListener(new ActionListener()
+        logButton.addActionListener(new ActionListener()
         {
                @Override public void actionPerformed(ActionEvent e)
                 {
+                    userName = username_TextField.getText();
+                    passwd = password_TextField.getText();
                     
-                    
-                    userName = jTextField1.getText();
-                    passwd = jTextField2.getText();
-                    
-                    boolean result = aModel.approved(userName, passwd);
-                    
-                    if(result == true)
+                    if (aModel.approved(userName, passwd) == true)
                     {
-                        System.out.println("Approved");
+                        aModel.resetAttempt();
+                        username_TextField.setText("");
+                        password_TextField.setText("");
+                        
+                        logFrame.setVisible(false);
+                        ProfileFrame proFrame = new ProfileFrame(aModel, logFrame);
                     }
                     else
-                    {
-                        System.out.println("Invalid Username or Password");
+                    {   
+                        aView.repaint();
                     }
                 }
         });
-        
-        
+        add(logButton);
     }
 
     /**
@@ -84,23 +69,23 @@ public class HERDLogin extends javax.swing.JPanel {
     private void initComponents() {
 
         jCheckBox2 = new javax.swing.JCheckBox();
-        jTextField1 = new javax.swing.JTextField();
+        username_TextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        password_TextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        logButton = new javax.swing.JButton();
 
         jCheckBox2.setText("jCheckBox2");
 
-        jTextField1.setText("jTextField1");
+        username_TextField.setText("jTextField1");
 
         jLabel1.setText("Username");
 
-        jTextField2.setText("jTextField2");
+        password_TextField.setText("jTextField2");
 
         jLabel2.setText("Password");
 
-        jButton1.setText("Log In");
+        logButton.setText("Log In");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -114,38 +99,40 @@ public class HERDLogin extends javax.swing.JPanel {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                        .addComponent(jTextField1)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(password_TextField, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                    .addComponent(username_TextField))
                 .addGap(28, 28, 28))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(157, 157, 157)
+                .addComponent(logButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(username_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(password_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(logButton)
+                .addContainerGap(128, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton logButton;
+    private javax.swing.JTextField password_TextField;
+    private javax.swing.JTextField username_TextField;
     // End of variables declaration//GEN-END:variables
 
 

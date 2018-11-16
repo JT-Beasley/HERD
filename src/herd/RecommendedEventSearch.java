@@ -11,30 +11,24 @@ import java.util.*;
  *
  * @author Jeren?
  */
-public class RecommendedEventSearch implements Search {
+public class RecommendedEventSearch implements EventSearch {
 
-//    RecommendedSearch(){};
-    private ArrayList<Events> m_Events;
     private EventSystem m_EventSystem;
+    private Users m_User;
 
-    public RecommendedEventSearch(EventSystem es) {
-        m_Events = es.getEvents();
+    public RecommendedEventSearch(EventSystem es, Users user) {
         m_EventSystem = es;
+        m_User = user;
     }
 
     @Override
-    public ArrayList<Events> search(Users user) {
-        ArrayList<String> interests = user.getInterest();
+    public ArrayList<Events> search() {
+        ArrayList<String> interests = m_User.getInterest();
         ArrayList<Events> recommended = new ArrayList();
+        ArrayList<Events> events = m_EventSystem.getEvents();
 
-        EventIterator eventIter = m_EventSystem.frontToBack();
-
-        //while (it.hasNext())
-        //  System.out.println(it.next());    
-        //}
         for (int j = 0; j < interests.size(); j++) {
-            while (eventIter.hasNext()) {
-                Events event = eventIter.next();
+            for (Events event : events) {
                 ArrayList eventTags = event.getTags();
 
                 for (int x = 0; x < eventTags.size(); x++) {

@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author jerensuzuki
  */
-public class MakeSerializableFile {
+/*public class MakeSerializableFile {
  
     private EventSystem es = new EventSystem();
     
@@ -138,4 +138,4 @@ public class MakeSerializableFile {
     public EventSystem getEventSystem(){
         return this.es;
     }
-}
+}*/

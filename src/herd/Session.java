@@ -23,7 +23,7 @@ public final class Session {
     private Scanner scanner;
     private boolean validUserName;
     private boolean validPassword;
-    private Users activeUser = new Users();
+    private Users activeUser;
 
     /**
      * checks login info for users
@@ -36,6 +36,7 @@ public final class Session {
         scanner = new Scanner(System.in);
         validUserName = false;
         validPassword = false;
+        activeUser = null;
     }
 
     public Session(ArrayList<Users> users) {
@@ -47,6 +48,7 @@ public final class Session {
         scanner = new Scanner(System.in);
         validUserName = false;
         validPassword = false;
+        activeUser = null;
     }
 
     public void Login() {

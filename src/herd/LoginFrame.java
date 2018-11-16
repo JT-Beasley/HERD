@@ -7,23 +7,29 @@ package herd;
 
 import java.awt.Container;
 import javax.swing.JFrame;
-
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.*;
 /**
  *
  * @author jtbea
  */
-public class HERDLoginFrame extends JFrame{
+public class LoginFrame extends JFrame{
+   
+    Model aModel = new Model();
+    LoginView aView = new LoginView(aModel);
+    LoginController login = new LoginController(aModel, aView, this);
     
-    HERDLogin login = new HERDLogin();
-    
-    public HERDLoginFrame()
+    public LoginFrame()
     {
         super("Log In");
-        setSize(400, 400);
+        setSize(500, 500);
         
         Container c = getContentPane();
+        c.setLayout(new BorderLayout());
         
-        c.add(login);
+        c.add(login,BorderLayout.NORTH);
+        c.add(aView,BorderLayout.SOUTH);
         
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -21,11 +21,9 @@ public class HERD {
         
         DataReader data = new FileDataReader();
         data.load();
-        EventSystem es = data.getEventSystem();
+//        EventSystem es = data.getEventSystem();
         
-        HERDLoginFrame hLogin = new HERDLoginFrame();
-        
-        //HERDFrame hFrame = new HERDFrame();
+        LoginFrame hLogin = new LoginFrame();
     }
     
 }

@@ -11,7 +11,7 @@ import java.util.*;
  * @author Emily
  */
 public interface EventSearch {
-    
-    ArrayList<Events> search(ArrayList<Events> events, Users user);
+
+    ArrayList<Events> search();
     
 }

@@ -19,7 +19,7 @@ public class Driver {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        
+/**        
 //        NewJPanel aDriver = new NewJPanel();
         
         
@@ -86,6 +86,6 @@ public class Driver {
 //       session.Session(queue);
 //       
 //       mi.MatchInterests(jeren, recievedEventList);
+* **/
     }
-
 }
