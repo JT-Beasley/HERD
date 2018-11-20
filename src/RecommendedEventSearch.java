@@ -30,12 +30,10 @@ public class RecommendedEventSearch implements Search {
         interests = m_User.getInterest();
         events = m_EventSystem.getEvents();
 
+        
         for (int j = 0; j < interests.size(); j++) {
-            String s = interests.get(j);
-
             for (Events event : events) {
                 eventTags = event.getTags();
-
                 for (int x = 0; x < eventTags.size(); x++) {
                     if ((eventTags.get(x) == interests.get(j)) && !(recommended.contains(event) )){
                         recommended.add(event);
@@ -44,13 +42,6 @@ public class RecommendedEventSearch implements Search {
                 }
             }
         }
-        
-        
-        
-        
-        
-        
-        
         return recommended;
     }
 }

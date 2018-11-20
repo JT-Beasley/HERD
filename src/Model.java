@@ -120,7 +120,7 @@ public final class Model {
         Events anEvent = returnedEvent.get(0);
         ArrayList<Events> currentSavedEvents = session.getCurrentUser().getSavedEvents();
         
-        if((anEvent==null) || (currentSavedEvents.contains(anEvent))){
+        if((anEvent==null) || (!currentSavedEvents.contains(anEvent))){
             JOptionPane.showMessageDialog(null, "You entered an incorrect event ID", "Error", JOptionPane.INFORMATION_MESSAGE);
         } else {
             session.getCurrentUser().removeSavedEvent(anEvent);

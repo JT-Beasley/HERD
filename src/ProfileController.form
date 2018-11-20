@@ -39,9 +39,9 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="removeTagButton" pref="100" max="32767" attributes="0"/>
+                  <Component id="removeTagButton" pref="0" max="32767" attributes="0"/>
                   <Component id="tagsToActionOn" alignment="1" max="32767" attributes="0"/>
-                  <Component id="addTagButton" alignment="1" pref="100" max="32767" attributes="0"/>
+                  <Component id="addTagButton" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -112,9 +112,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Remove from Saved"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteSavedEventButtonActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="addTagButton">
       <Properties>
@@ -127,11 +124,12 @@
     <Component class="javax.swing.JComboBox" name="tagsToActionOn">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Party"/>
-            <StringItem index="1" value="Music"/>
-            <StringItem index="2" value="Food"/>
-            <StringItem index="3" value="Sports"/>
+          <StringArray count="5">
+            <StringItem index="0" value="&lt;none&gt;"/>
+            <StringItem index="1" value="Party"/>
+            <StringItem index="2" value="Music"/>
+            <StringItem index="3" value="Food"/>
+            <StringItem index="4" value="Sports"/>
           </StringArray>
         </Property>
       </Properties>
