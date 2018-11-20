@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -55,6 +56,10 @@ public final class Model {
         attempt = true;
         return session.approved(userName, passwd);
     }
+    
+    public ArrayList<String> getInterests(){
+        return session.getCurrentUser().getInterest();
+    }
 
     /**
      * Returns the list of recommended events for a given user
@@ -96,13 +101,14 @@ public final class Model {
         esid = new EventSearchByID(es, eventID);
         ArrayList<Events> returnedEvent = esid.search();
         Events anEvent = returnedEvent.get(0);
-        System.out.println("The saved event I want to add is: " + anEvent.getTitle());
+//        System.out.println("The saved event I want to add is: " + anEvent.getTitle());
 
         ArrayList<Events> currentSavedEvents = session.getCurrentUser().getSavedEvents();
 
         // Checks to make sure you don't already have the saved event in your list
-        if (currentSavedEvents.contains(anEvent)) {
+        if((anEvent==null) || (currentSavedEvents.contains(anEvent))){
             // do nothing
+            JOptionPane.showMessageDialog(null, "You entered an incorrect event ID", "Error", JOptionPane.INFORMATION_MESSAGE);
         } else {
             session.getCurrentUser().addSavedEvent(anEvent);
         }
@@ -114,7 +120,9 @@ public final class Model {
         Events anEvent = returnedEvent.get(0);
         ArrayList<Events> currentSavedEvents = session.getCurrentUser().getSavedEvents();
         
-        if (currentSavedEvents.contains(anEvent)){
+        if((anEvent==null) || (currentSavedEvents.contains(anEvent))){
+            JOptionPane.showMessageDialog(null, "You entered an incorrect event ID", "Error", JOptionPane.INFORMATION_MESSAGE);
+        } else {
             session.getCurrentUser().removeSavedEvent(anEvent);
         }
     }

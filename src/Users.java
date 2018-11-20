@@ -10,7 +10,7 @@ public class Users implements Serializable {
 
     private String name;
     private String password;
-    private ArrayList<String> interests = new ArrayList();
+    private ArrayList<String> interests;
     private ArrayList<Events> savedEvents;
 
     public Users() {
@@ -44,14 +44,20 @@ public class Users implements Serializable {
      * @param userInterest
      */
     public void addInterests(String userInterest) {
+//        System.out.println("I am trying to add" + userInterest);
         if (interests.contains(userInterest)) {
         } else {
             interests.add(userInterest);
         }
+        
+//        System.out.println(interests.get(0));
     }
 
     public void removeInterests(String userInterest) {
         interests.remove(userInterest);
+        if (interests.isEmpty()) {
+            interests = new ArrayList();
+        }
     }
 
     /**

@@ -31,7 +31,15 @@ public class ProfileView extends javax.swing.JPanel {
         if (recommended.isEmpty()) {
             jTextArea1.setText("You have no recommended events, add some interests!");
         } else {
-            jTextArea1.setText("Recommended Events: \n \n \n");
+            jTextArea1.setText("Your current interests are:\n");
+            ArrayList<String> interests = new ArrayList();
+            interests = aModel.getInterests();
+            
+            for (String astring : interests){
+                jTextArea1.append(astring + "\n");
+            }
+            
+            jTextArea1.append("\nRecommended Events: \n \n");
 
             for (Events event : recommended) {
                 String eventName = event.getTitle() + "\n";

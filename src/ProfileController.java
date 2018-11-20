@@ -2,6 +2,7 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,7 +13,7 @@ public class ProfileController extends javax.swing.JPanel {
     private String activeTag;
     private Model aModel;
     private final ProfileView profileView;
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -124,6 +125,7 @@ public class ProfileController extends javax.swing.JPanel {
 
     private void addTagButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTagButtonActionPerformed
         aModel.addInterests(activeTag);
+//        aModel.getRecommended();
         profileView.repaint();
     }//GEN-LAST:event_addTagButtonActionPerformed
 
@@ -160,12 +162,11 @@ public class ProfileController extends javax.swing.JPanel {
      * @param logFrame
      */
     public ProfileController(Model Model, ProfileView aView, ProfileSavedEventView savedEvents, ProfileFrame proFrame, LoginFrame logFrame) {
-        
+
         initComponents();
         profileView = aView;
         aModel = Model;
         setBackground(Color.green);
-        
 
         logOutButton.addActionListener(new ActionListener() {
             @Override
@@ -180,7 +181,12 @@ public class ProfileController extends javax.swing.JPanel {
         addSavedEventButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                aModel.setSavedEvent(Integer.parseInt(jTextField1.getText()));
+                try {
+                    aModel.setSavedEvent(Integer.parseInt(jTextField1.getText()));
+                } catch (NumberFormatException nfe) {
+                    JOptionPane.showMessageDialog(null, "You entered some non-numeric characters", "Error", JOptionPane.INFORMATION_MESSAGE);
+                    jTextField1.setText("");
+                }
                 savedEvents.repaint();
             }
         });
@@ -189,12 +195,17 @@ public class ProfileController extends javax.swing.JPanel {
         deleteSavedEventButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                aModel.removeSavedEvent(Integer.parseInt(jTextField1.getText()));
+                try {
+                    aModel.removeSavedEvent(Integer.parseInt(jTextField1.getText()));
+                } catch (NumberFormatException nfe) {
+                    JOptionPane.showMessageDialog(null, "You entered some non-numeric characters", "Error", JOptionPane.INFORMATION_MESSAGE);
+                    jTextField1.setText("");
+                }
                 savedEvents.repaint();
             }
         });
         add(deleteSavedEventButton);
-        
+
         createEventButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -204,8 +215,7 @@ public class ProfileController extends javax.swing.JPanel {
             }
         });
         add(createEventButton);
-        
+
     }
-    
 
 }

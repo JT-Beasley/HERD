@@ -25,7 +25,7 @@ public class RecommendedEventSearch implements Search {
         recommended = new ArrayList();
     }
 
-//    @Override
+    @Override
     public ArrayList<Events> search() {
         interests = m_User.getInterest();
         events = m_EventSystem.getEvents();
@@ -37,13 +37,20 @@ public class RecommendedEventSearch implements Search {
                 eventTags = event.getTags();
 
                 for (int x = 0; x < eventTags.size(); x++) {
-                    if (eventTags.get(x) == interests.get(j)) {
+                    if ((eventTags.get(x) == interests.get(j)) && !(recommended.contains(event) )){
                         recommended.add(event);
                         break;
                     }
                 }
             }
         }
+        
+        
+        
+        
+        
+        
+        
         return recommended;
     }
 }
