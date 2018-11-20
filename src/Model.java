@@ -61,7 +61,7 @@ public final class Model {
      * @return
      */
     public ArrayList<Events> getRecommended() {
-        RecommendedEventSearch rs = new RecommendedEventSearch(es, session.getCurrentUser());
+        Search rs = new RecommendedEventSearch(es, session.getCurrentUser());
         ArrayList<Events> recommended = rs.search();
         return recommended;
     }
@@ -91,9 +91,11 @@ public final class Model {
      * @param eventID
      */
     public void setSavedEvent(int eventID) {
+        
         // Search the list of events for one that matches the event ID
         EventSearchByID esid = new EventSearchByID(es, eventID);
-        Events anEvent = esid.search();
+        ArrayList<Events> returnedEvent = esid.search();
+        Events anEvent = returnedEvent.get(0);
 
         ArrayList<Events> currentSavedEvents = session.getCurrentUser().getSavedEvents();
 
@@ -107,7 +109,8 @@ public final class Model {
     
     public void removeSavedEvent(int eventID){
         EventSearchByID esid = new EventSearchByID(es, eventID);
-        Events anEvent = esid.search();
+        ArrayList<Events> returnedEvent = esid.search();
+        Events anEvent = returnedEvent.get(0);
         ArrayList<Events> currentSavedEvents = session.getCurrentUser().getSavedEvents();
         
         if (currentSavedEvents.contains(anEvent)){
