@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,6 +32,7 @@ public class LoginController extends javax.swing.JPanel {
         aModel = Model;
         aView = View;
         logFrame = Frame;
+        username_TextField.requestFocus();
 
 
         logButton.addActionListener(new ActionListener() {
@@ -47,6 +49,9 @@ public class LoginController extends javax.swing.JPanel {
                     logFrame.setVisible(false);
                     ProfileFrame proFrame = new ProfileFrame(aModel, logFrame);
                 } else {
+                    JOptionPane.showMessageDialog(null, "WRONG LOGIN", "WRONG LOGIN???", JOptionPane.INFORMATION_MESSAGE);
+                    username_TextField.setText("");
+                    password_TextField.setText("");
                     aView.repaint();
                 }
             }
@@ -77,17 +82,17 @@ public class LoginController extends javax.swing.JPanel {
 
         jCheckBox2 = new javax.swing.JCheckBox();
         username_TextField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        usernameLabel = new javax.swing.JLabel();
         password_TextField = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        passwordLabel = new javax.swing.JLabel();
         logButton = new javax.swing.JButton();
         quitButton = new javax.swing.JButton();
 
         jCheckBox2.setText("jCheckBox2");
 
-        jLabel1.setText("Username");
+        usernameLabel.setText("Username");
 
-        jLabel2.setText("Password");
+        passwordLabel.setText("Password");
 
         logButton.setText("Log In");
 
@@ -101,10 +106,10 @@ public class LoginController extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                        .addComponent(usernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(username_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -122,11 +127,11 @@ public class LoginController extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(usernameLabel)
                     .addComponent(username_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(passwordLabel)
                     .addComponent(password_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -139,11 +144,11 @@ public class LoginController extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton logButton;
+    private javax.swing.JLabel passwordLabel;
     private javax.swing.JTextField password_TextField;
     private javax.swing.JButton quitButton;
+    private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField username_TextField;
     // End of variables declaration//GEN-END:variables
 

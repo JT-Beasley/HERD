@@ -1,3 +1,4 @@
+
 /**
  *
  * @author jtbea
@@ -14,12 +15,12 @@ public class Users implements Serializable {
 
     public Users() {
     }
-    
+
     /**
-     * 
+     *
      * @param inputName
      * @param inputPassword
-     * @param inputInterests 
+     * @param inputInterests
      */
     public Users(String inputName, String inputPassword, ArrayList<String> inputInterests) {
         name = inputName;
@@ -43,16 +44,19 @@ public class Users implements Serializable {
      * @param userInterest
      */
     public void addInterests(String userInterest) {
-        interests.add(userInterest);
-        System.out.println("Adding: " + userInterest);
+        if (interests.contains(userInterest)) {
+        } else {
+            interests.add(userInterest);
+        }
     }
-    
-    public void removeInterests(String userInterest){
+
+    public void removeInterests(String userInterest) {
         interests.remove(userInterest);
     }
 
     /**
      * retrieves the user's name
+     *
      * @return name
      */
     public String getName() {
@@ -61,7 +65,8 @@ public class Users implements Serializable {
 
     /**
      * Returns a list of interests
-     * @return 
+     *
+     * @return
      */
     public ArrayList<String> getInterest() {
         return interests;
@@ -93,16 +98,17 @@ public class Users implements Serializable {
     public void addSavedEvent(Events event) {
         savedEvents.add(event);
     }
-    
+
     public void removeSavedEvent(Events event) {
         savedEvents.remove(event);
     }
 
     /**
      * returns an event from the savedEvents array list
-     * @return 
+     *
+     * @return
      */
-    public ArrayList <Events> getSavedEvents() {
+    public ArrayList<Events> getSavedEvents() {
         return savedEvents;
     }
 }

@@ -1,3 +1,4 @@
+
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -11,8 +12,8 @@ public class ProfileSavedEventView extends javax.swing.JPanel {
     ArrayList<Events> saved;
 
     /**
-     * 
-     * @param Model 
+     *
+     * @param Model
      */
     public ProfileSavedEventView(Model Model) {
         initComponents();
@@ -21,26 +22,29 @@ public class ProfileSavedEventView extends javax.swing.JPanel {
     }
 
     /**
-     * 
-     * @param g 
+     *
+     * @param g
      */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        
+
         System.out.println();
-                
+
         jTextArea1.setText("");
         jTextArea1.setText("Your saved events are: \n \n \n");
 
         if (saved.isEmpty()) {
             jTextArea1.append("There are no saved events");
         } else {
-            for (Events event : saved) {
-                String eventName = event.getTitle() + "\n";
-                jTextArea1.append(eventName);
-                String eventDescription = "    " + event.getDescription() + "\n";
-                jTextArea1.append(eventDescription);
+            try {
+                for (Events event : saved) {
+                    String eventName = event.getTitle() + "\n";
+                    jTextArea1.append(eventName);
+                    String eventDescription = "    " + event.getDescription() + "\n";
+                    jTextArea1.append(eventDescription);
+                }
+            } catch (java.lang.NullPointerException npe) {
             }
         }
 

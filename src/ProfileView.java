@@ -1,3 +1,4 @@
+
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -8,16 +9,15 @@ import java.util.ArrayList;
 public class ProfileView extends javax.swing.JPanel {
 
     private final Model aModel;
-    private final ArrayList<Events> recommended;
+    private ArrayList<Events> recommended;
 
     /**
-     * 
-     * @param Model 
+     *
+     * @param Model
      */
     public ProfileView(Model Model) {
         initComponents();
         aModel = Model;
-        recommended = aModel.getRecommended();
     }
 
     @SuppressWarnings("unchecked")
@@ -25,16 +25,22 @@ public class ProfileView extends javax.swing.JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        jTextArea1.setText("");
-        jTextArea1.setText("Recommended Events: \n \n \n");
+        recommended = aModel.getRecommended();
 
-       for (Events event : recommended) {
-            String eventName = event.getTitle() + "\n";
-            jTextArea1.append(eventName);
-            String eventDescription = "    " + event.getDescription() + "\n";
-            jTextArea1.append(eventDescription);
-            String eventHashID = "    " + Integer.toString(event.getHashID()) + "\n \n";
-            jTextArea1.append(eventHashID);
+        jTextArea1.setText("");
+        if (recommended.isEmpty()) {
+            jTextArea1.setText("You have no recommended events, add some interests!");
+        } else {
+            jTextArea1.setText("Recommended Events: \n \n \n");
+
+            for (Events event : recommended) {
+                String eventName = event.getTitle() + "\n";
+                jTextArea1.append(eventName);
+                String eventDescription = "    " + event.getDescription() + "\n";
+                jTextArea1.append(eventDescription);
+                String eventHashID = "    " + Integer.toString(event.getHashID()) + "\n \n";
+                jTextArea1.append(eventHashID);
+            }
         }
 
         // Sets view to beginning of text

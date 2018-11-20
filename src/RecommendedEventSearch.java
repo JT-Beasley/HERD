@@ -30,8 +30,9 @@ public class RecommendedEventSearch implements Search {
         interests = m_User.getInterest();
         events = m_EventSystem.getEvents();
 
-        
         for (int j = 0; j < interests.size(); j++) {
+            String s = interests.get(j);
+
             for (Events event : events) {
                 eventTags = event.getTags();
 
