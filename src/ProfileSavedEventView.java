@@ -18,7 +18,6 @@ public class ProfileSavedEventView extends javax.swing.JPanel {
     public ProfileSavedEventView(Model Model) {
         initComponents();
         aModel = Model;
-        saved = aModel.getSavedEvents();
     }
 
     /**
@@ -29,7 +28,8 @@ public class ProfileSavedEventView extends javax.swing.JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        System.out.println();
+        saved = aModel.getSavedEvents();
+        
 
         jTextArea1.setText("");
         jTextArea1.setText("Your saved events are: \n \n \n");
@@ -43,6 +43,7 @@ public class ProfileSavedEventView extends javax.swing.JPanel {
                     jTextArea1.append(eventName);
                     String eventDescription = "    " + event.getDescription() + "\n";
                     jTextArea1.append(eventDescription);
+//                    System.out.println(event.getTitle());
                 }
             } catch (java.lang.NullPointerException npe) {
             }
@@ -82,8 +83,8 @@ public class ProfileSavedEventView extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 26, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 56, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

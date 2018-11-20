@@ -16,7 +16,6 @@ public class LoginController extends javax.swing.JPanel {
     private String username;
     private String password;
     final private Model aModel;
-    final private LoginView aView;
     final private LoginFrame logFrame;
 
     /**
@@ -26,11 +25,10 @@ public class LoginController extends javax.swing.JPanel {
      * @param View
      * @param Frame
      */
-    public LoginController(final Model Model, final LoginView View, final LoginFrame Frame) {
+    public LoginController(final Model Model, final LoginFrame Frame) {
 
         initComponents();
         aModel = Model;
-        aView = View;
         logFrame = Frame;
         username_TextField.requestFocus();
 
@@ -49,10 +47,9 @@ public class LoginController extends javax.swing.JPanel {
                     logFrame.setVisible(false);
                     ProfileFrame proFrame = new ProfileFrame(aModel, logFrame);
                 } else {
-                    JOptionPane.showMessageDialog(null, "WRONG LOGIN", "WRONG LOGIN???", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Incorrect Username or Password", "Error", JOptionPane.INFORMATION_MESSAGE);
                     username_TextField.setText("");
                     password_TextField.setText("");
-                    aView.repaint();
                 }
             }
         });

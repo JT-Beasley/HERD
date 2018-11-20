@@ -28,11 +28,10 @@ public class EventSearchByID implements Search{
                 someEvent = event;
                 break;
             }
-         }
+        }
         
         returnEvent.add(someEvent);
 
         return returnEvent;
     }
-
 }

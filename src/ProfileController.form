@@ -40,10 +40,8 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="removeTagButton" pref="100" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="tagsToActionOn" max="32767" attributes="0"/>
-                      <Component id="addTagButton" pref="100" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="tagsToActionOn" alignment="1" max="32767" attributes="0"/>
+                  <Component id="addTagButton" alignment="1" pref="100" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -91,6 +89,7 @@
     <Component class="javax.swing.JButton" name="addSavedEventButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add to Saved"/>
+        <Property name="toolTipText" type="java.lang.String" value="ADD TO SAVED EVENTs"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="logOutButton">
@@ -113,6 +112,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Remove from Saved"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteSavedEventButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="addTagButton">
       <Properties>

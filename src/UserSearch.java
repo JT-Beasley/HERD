@@ -68,7 +68,6 @@ public class UserSearch {
                 }
             }
         } catch (NoSuchElementException e) {
-//            System.out.println("User, " + name + ", Not Found");
             return null;
         }
 

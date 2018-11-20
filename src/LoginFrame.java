@@ -8,19 +8,17 @@ import java.awt.*;
 public class LoginFrame extends JFrame{
    
     Model aModel = new Model();
-    LoginView aView = new LoginView(aModel);
-    LoginController login = new LoginController(aModel, aView, this);
+    LoginController login = new LoginController(aModel, this);
     
     public LoginFrame()
     {
         super("Log In");
-        setSize(400, 300);
+        setSize(400, 200);
         
         Container c = getContentPane();
         c.setLayout(new BorderLayout());
         
         c.add(login,BorderLayout.NORTH);
-        c.add(aView,BorderLayout.SOUTH);
         
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

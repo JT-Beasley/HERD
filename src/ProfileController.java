@@ -34,6 +34,7 @@ public class ProfileController extends javax.swing.JPanel {
         removeTagButton = new javax.swing.JButton();
 
         addSavedEventButton.setText("Add to Saved");
+        addSavedEventButton.setToolTipText("ADD TO SAVED EVENTs");
 
         logOutButton.setText("Log Out");
 
@@ -43,6 +44,11 @@ public class ProfileController extends javax.swing.JPanel {
         jTextField1.setToolTipText("Event ID");
 
         deleteSavedEventButton.setText("Remove from Saved");
+        deleteSavedEventButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteSavedEventButtonActionPerformed(evt);
+            }
+        });
 
         addTagButton.setText("Add Tag");
         addTagButton.addActionListener(new java.awt.event.ActionListener() {
@@ -77,10 +83,9 @@ public class ProfileController extends javax.swing.JPanel {
                     .addComponent(jTextField1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(removeTagButton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(tagsToActionOn, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addTagButton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
+                    .addComponent(removeTagButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(tagsToActionOn, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addTagButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(logOutButton, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -126,6 +131,10 @@ public class ProfileController extends javax.swing.JPanel {
         aModel.removeInterests(activeTag);
         profileView.repaint();
     }//GEN-LAST:event_removeTagButtonActionPerformed
+
+    private void deleteSavedEventButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSavedEventButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteSavedEventButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -15,6 +15,7 @@ public final class Model {
     private final Session session;
     private boolean attempt;
     private final DataReader data;
+    private Search esid;
 
     Model() {
         // MUST BE IN THIS ORDER
@@ -91,11 +92,11 @@ public final class Model {
      * @param eventID
      */
     public void setSavedEvent(int eventID) {
-        
         // Search the list of events for one that matches the event ID
-        EventSearchByID esid = new EventSearchByID(es, eventID);
+        esid = new EventSearchByID(es, eventID);
         ArrayList<Events> returnedEvent = esid.search();
         Events anEvent = returnedEvent.get(0);
+        System.out.println("The saved event I want to add is: " + anEvent.getTitle());
 
         ArrayList<Events> currentSavedEvents = session.getCurrentUser().getSavedEvents();
 
@@ -108,7 +109,7 @@ public final class Model {
     }
     
     public void removeSavedEvent(int eventID){
-        EventSearchByID esid = new EventSearchByID(es, eventID);
+       esid = new EventSearchByID(es, eventID);
         ArrayList<Events> returnedEvent = esid.search();
         Events anEvent = returnedEvent.get(0);
         ArrayList<Events> currentSavedEvents = session.getCurrentUser().getSavedEvents();

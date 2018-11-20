@@ -1,6 +1,6 @@
 import java.util.*;
 
 public interface Search {
-    
-    public abstract ArrayList<Events> search();
+    // Lets us define search() how we want;
+    public ArrayList<Events> search();
 }
